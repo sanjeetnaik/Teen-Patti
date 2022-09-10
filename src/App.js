@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import StartScreen from "./StartScreen";
+import axios from 'axios';
 
 function App() {
+
+  const [name, setName] = useState("")
+  const [stack, setStack] = useState(0)
+  const [gameURL, setGameURL] = useState("")
+
+  const getDetails = (user_name, stack) => {
+    console.log(user_name, stack);
+    setName(user_name)
+    setStack(stack)
+    getGameURL()
+  }
+
+  const getGameURL = () => {
+    axios.post("http://localhost:8000/createMember&Room", "", {params: {
+      name, stack
+    }})
+    .then(response => setGameURL(response.data.data))
+    .catch(err => console.log(err))
+  }  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {gameURL == "" ?
+      <StartScreen getDetails={getDetails} /> :
+        <h1>{gameURL}</h1>
+      }
     </div>
   );
 }
