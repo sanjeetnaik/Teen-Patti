@@ -1,0 +1,24 @@
+Adding New Collection:
+msg_collection = client[dataBase][roomDetails]
+msg_collection.insert_one(mydict)
+
+
+Deleting Collection:
+client[dataBase][playerQueue].delete_one({"_id":id})
+
+
+Finding By:
+msg_collection = client[dataBase][roomDetails].find({"roomId" :roomId })
+
+
+Insert new element in array:
+msg_collection = client[dataBase][playerQueue] 
+msg_collection.update_one({"roomId":roomId}, {"$push":{"queue": {"name" : name, "stack": stack,"roomId": roomId}}})
+
+
+Change element in array:
+client[dataBase][activeMembers].update_one({"_id":id}, {"$set":{"playerSeatNum": seatnum}})
+
+
+Deleting element in array:
+client[dataBase][playerQueue].update_one({"_id" : id},{"$pull" : {"queue":{"name":name}}})
