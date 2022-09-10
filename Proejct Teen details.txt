@@ -1,0 +1,17 @@
+Add more characters in roomId
+Frontend full - Samriddhi 
+Bet - minimum, 20, 2x, 3x.
+Side-show => Yes
+
+Device MAC address - NA => Browser cannot turn off during game, else game lost.
+
+Auth - Token and geo-location (Alpha Testing)
+
+Parking-Lot :
+1. IP address of device
+2. Number of users (limit > 1000)
+
+
+
+Update  = RM-DSU = Every Tuesday
+
