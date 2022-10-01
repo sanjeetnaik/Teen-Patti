@@ -1,0 +1,7 @@
+.options {
+    @apply m-auto h-full px-2 py-5 rounded-t-lg ;
+}
+
+.game-btn {
+    @apply h-12 border-2 border-green-700 rounded-md text-green-500 font-bold flex items-center justify-center
+}

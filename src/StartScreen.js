@@ -7,7 +7,7 @@ function StartScreen({getDetails}) {
 
     return (
         <div className='bg-[#202020]'>
-        <div className="bg-splash h-screen text-slate-200 bg-contain bg-no-repeat bg-center" >
+        <div className="bg-mobile-splash sm:bg-splash h-screen text-slate-200 bg-contain bg-no-repeat bg-center" >
             <div className='w-full sm:w-5/12 md:w-4/12 lg:w-3/12 xl:w-3/12 rounded-lg absolute top-1/2 left-1/2 -translate-y-1/2 
             -translate-x-1/2 p-5 bg-black/80' >
                 <div>
