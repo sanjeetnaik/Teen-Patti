@@ -236,7 +236,7 @@ const Game = ({socket}) => {
         })
 
         socket.on("player_sideshow_result", (data) => {
-            setSideShowResult(data.message)
+            setSideShowResult(data.Message)
             setSideShowRequest(true)
             setTimeout(() => {
                 setSideShowRequest(false)
@@ -261,11 +261,13 @@ const Game = ({socket}) => {
             reqPlayerName: data.reqPlayerName
         })
 
+        setReqPlayerName(data.reqPlayerName)
+
         setTimeout(() => {
             setShowSideShowRequestSentPopup(false)
         }, 3000);
 
-        setReqPlayerName(data.reqPlayerName)
+        
 
         // if(data.reqPlayer == playerSeat){
         //     console.log("side show request received from", data.name);
@@ -275,6 +277,7 @@ const Game = ({socket}) => {
     }
 
     useEffect(() => {
+        console.log("name", name, "req player name", reqPlayerName);
         if (reqPlayerName == name){
             setIsReqPlayer(true)
         }
@@ -326,6 +329,7 @@ const Game = ({socket}) => {
         }
     }
 
+    console.log(players.length, players);
 
     // useEffect(() => {
     // }, [name])
@@ -513,10 +517,10 @@ const Game = ({socket}) => {
         }).then(res => {
             console.log("update data",res.data);
             console.log("message", res.data.Message);
-            getRoundDetails("called from handle sideshow")
             setIsReqPlayer(false)
+            setReqPlayerName("-")
             setShowSideShowRequestSentPopup(false)
-            setSideShowRequest(res.data.Message)
+            setSideShowResult(res.data.Message)
             setShowSideShowResult(true)
 
             setTimeout(() => {
@@ -534,6 +538,8 @@ const Game = ({socket}) => {
                 message: res.data.Message,
                 move:"SideShow"
             })
+
+            getRoundDetails("called from handle sideshow")
             
         }).catch(err => {
             console.log("errors", err);
@@ -555,13 +561,14 @@ const Game = ({socket}) => {
         }).then(res => {
             console.log("update data",res.data);
             console.log("message", res.data.Message);
-            getRoundDetails("called from handle")
             
             socket.emit("update_move", {
                 roomId,
                 message: res.data.Message,
                 move:"Check"
             })
+
+            getRoundDetails("called from handle")
             
         })
     }
@@ -633,6 +640,13 @@ const Game = ({socket}) => {
                                 <button 
                                     onClick={e => setShowSeatRequestSentPopup(false)}
                                     className='border-[#939393] border-2 mt-4 text-[#939393] font-bold w-16 block rounded-lg ml-auto p-2' >OK</button>
+                            </div>
+                        }
+
+                        {hasGameStarted && 
+                            <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#333232] text-white/80 p-2 rounded-lg' > 
+                                <p>Current Pot</p>
+                                <p className='text-center font-bold text-lg' >{roundDetails.currentPot}</p>
                             </div>
                         }
 

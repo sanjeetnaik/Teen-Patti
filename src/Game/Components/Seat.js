@@ -67,7 +67,7 @@ const Seat = ({name, seatNum, playerSeat, getSeatHandler, players, roundDetails,
             playerCards = roundDetails.currentPlayerCards[index].split(" ")
         }
 
-        console.log("sm",roundDetails.currentPlayerPack && roundDetails.currentPlayerPack[index] == "No" && (fullShow || (playerSeat == seatNum && roundDetails.currentPlayerCardSeen[index] == "Yes")));
+        // console.log("sm",roundDetails.currentPlayerPack && roundDetails.currentPlayerPack[index] == "No" && (fullShow || (playerSeat == seatNum && roundDetails.currentPlayerCardSeen[index] == "Yes")));
 
         return (
             <div className='' >
@@ -106,7 +106,11 @@ const Seat = ({name, seatNum, playerSeat, getSeatHandler, players, roundDetails,
                     return true
                 }
             })
-            playerCards = roundDetails.currentPlayerCards[index].split(" ")
+
+            // console.log(index, roundDetails.currentPlayerCards);
+            if(index != -1){
+                playerCards = roundDetails.currentPlayerCards[index].split(" ")
+             }
         }
         // const playerCards = roundDetails.currentPlayerCards[index].split(" ")
 
