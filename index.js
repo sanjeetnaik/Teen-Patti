@@ -15,6 +15,7 @@ const server = http.createServer(app); // Add this
 const io = new Server(server, {
   cors: {
     origin: 'https://teen-patti-react-app-364313.el.r.appspot.com',
+    "responseHeader": "*",
     methods: ['GET', 'POST', 'PUT'],
   },
 });
