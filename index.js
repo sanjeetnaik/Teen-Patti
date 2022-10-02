@@ -14,8 +14,8 @@ const server = http.createServer(app); // Add this
 // Create an io server and allow for CORS from http://localhost:3000 with GET and POST methods
 const io = new Server(server, {
   cors: {
-    origin: 'https://teen-patti-react-app-364313.el.r.appspot.com',
-    "responseHeader": '*',
+    origin: '*',
+    responseHeader: '*',
     methods: ['GET', 'POST', 'PUT'],
   },
 });
