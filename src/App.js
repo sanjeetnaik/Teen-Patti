@@ -12,7 +12,7 @@ import io from 'socket.io-client';
 import StartScreen from "./StartScreen";
 import Game from "./Game/Game";
 
-const socket = io.connect('https://project-teen-20221002.el.r.appspot.com');
+const socket = io.connect('https://teenpattiserver.herokuapp.com/');
 
 function App() {
 
