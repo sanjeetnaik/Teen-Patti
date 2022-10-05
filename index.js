@@ -14,7 +14,7 @@ const server = http.createServer(app); // Add this
 // Create an io server and allow for CORS from http://localhost:3000 with GET and POST methods
 const io = new Server(server, {
   cors: {
-    origin: 'https://teenpattiwebsite.herokuapp.com/',
+    origin: 'https://teenpattifrontend.herokuapp.com/',
     credentials: true ,
     methods: ['GET', 'POST', 'PUT'],
   },
