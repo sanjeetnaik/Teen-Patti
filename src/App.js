@@ -36,7 +36,7 @@ function App() {
   }, [name, stack])
 
   const getGameURL = () => {
-    axios.post("http://localhost:8000/createMember&Room", "", {params: {
+    axios.post("https://teenpatti321.herokuapp.com/createMember&Room", "", {params: {
       name, stack
     }})
     .then(response => {
